@@ -1,4 +1,4 @@
-class Repl
+class Message
 
   def self.welcome
     puts "Welcome to Mastermind!"

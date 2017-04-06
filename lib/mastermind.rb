@@ -1,37 +1,20 @@
-require './lib/repl'
-require './lib/game_flow'
+require './lib/game_start'
+require './message'
 require 'pry'
 
-class Mastermind
+class Mastermind 
 
-  def initialize
-    Repl.welcome
-    user_choice
-    Repl.game_start
-  end
-  
-  def user_choice
-    input = gets.chomp.downcase
-    if input == "i" 
-      Repl.instructions
-    elsif input == "p" || input == "play"
-      Repl.game_start.key_generator
-    else 
-      input == "q" || input == "quit"
-      Repl.game_end
-    end
-  end
-  
-  def game_start
-    if input == "p" || input == "play"
-       key_generator
-    end
-  end
-  Repl.welcome
-  input = gets.chomp.downcase
-  @game_flow.game_start
-  
-    
-end
 
-Mastermind.new
+  def user_choice
+    input = gets.chomp.downcase
+    until input == "q" || input == "quit"
+      if input == "i" 
+      message.instructions
+      elsif input == "p" || input == "play"
+      message.game_start
+      else
+        message.game_end
+      end
+    end
+ end
+ 

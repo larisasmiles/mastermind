@@ -12,14 +12,6 @@ class MastermindTest < Minitest::Test
     assert_instance_of Mastermind, mastermind
 
   end
-
-  def test_welcome_message
-    mastermind = Mastermind.new 
-
-    assert_output "Welcome to Mastermind!\nWould you like to (p)lay, read the (i)nstructions, or (q)uit?\n" do
-       Repl.welcome
-    end
-  end
   
   def test_has_a_key_generator
     mastermind = Mastermind.new
