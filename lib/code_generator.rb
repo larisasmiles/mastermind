@@ -7,5 +7,3 @@ class CodeGenerator
     end
   end
 end
-
-p CodeGenerator.new.secret_code

@@ -1,9 +1,8 @@
 require 'minitest/autorun'
 require 'minitest/pride'
-# require './lib/game_start'
-# require './lib/mastermind'
+require './lib/game_start'
+require './lib/mastermind'
 
-# require "pry"
 
 class GameStartTest < Minitest::Test
 
