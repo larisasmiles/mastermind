@@ -3,16 +3,12 @@ require './lib/message.rb'
 require './lib/code_generator.rb'
 
 class Mastermind 
-  attr_reader :input
-    
-     include Message
-
+  include Message
 
   def initialize
-  
     @secret_code = CodeGenerator.new.secret_code
     @start_time = nil 
-    greet_player
+    @player_guess = []
   end
 
   def greet_player
@@ -22,7 +18,7 @@ class Mastermind
   end
 
   def options_loop
-    @input = gets.chomp.downcase
+    input = gets.chomp.downcase
     until input == "q" || input == "quit"
       if input == "i" || input == "intructions"
         instructions
@@ -39,25 +35,27 @@ class Mastermind
   end
   
   def play_game
-    game_start
     input = gets.chomp.downcase
     guess_checker(input)
   end
-
+  
   def guess_checker(input)
-    input = gets.chomp.downcase
-    if input == secret_code
+    if input == secret_code.join
       player_wins
     elsif input == "c" || input == "cheat"
-      secret_code
+      display_secret(@secret_code)
     elsif input == wrong_length
       too_long
     elsif input == wrong_length
       too_short
+    # elsif input == ? what should I do here.. player_guess
+      keep_trying
     else
       invalid_entry
     end
   end
+end
+
 
   def wrong_length
     if input.length > 4 
@@ -66,7 +64,18 @@ class Mastermind
       too_short
     end
   end
-end
+
+  # def player_guess
+  #   need input to compare to secret code..is ther secret code the same as the code generator? or should
+  #   I call it something different?
+  #   need to have index values to be able to compare to secret code and color values.. 
+  #   I want to create a method that can than use string interploation for my message. b 
+  # end
+  
+
+
+
+
 
 
 

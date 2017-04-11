@@ -36,6 +36,16 @@ module Message
     puts "That guess was way too short. Must be 4 characters only! Guess again!"
   end
 
+  def display_secret(code)
+    puts "CHEATER! The secret code is #{code}!" 
+  end
+  
+  def keep_trying
+   puts "'RRGB' has #{} of the correct elements with #{} in the correct positions
+         You've taken #{} guess"
+  end
+        
+
   def invalid_entry
     puts "Sorry invalid entry try again!"
   end
