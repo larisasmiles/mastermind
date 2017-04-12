@@ -50,11 +50,9 @@ module Message
     puts "Sorry invalid entry try again!"
   end
   
-
   def player_wins
     puts "Congratulations! You guessed #{} in #{} guesses over #{}"
-
-    puts "Do you want to (p)lay again or (q)uit?" 
+    puts "Do you want to (p)lay again or (q)uit?"
   end
   
 end
