@@ -1,3 +1,4 @@
+require './lib/code_checker.rb'
 module Message
  
 
@@ -41,8 +42,8 @@ module Message
   end
   
   def keep_trying
-   puts "'RRGB' has #{} of the correct elements with #{} in the correct positions
-         You've taken #{} guess"
+   puts "You have #{CodeChecker.correct_colors} of the correct elements with #{CodeChecker.result} in the correct positions
+         You've taken #{Mastermind.guess} guess"
   end
         
 
