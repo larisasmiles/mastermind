@@ -41,18 +41,17 @@ module Message
     puts "CHEATER! The secret code is #{code}!" 
   end
   
-  def keep_trying
-   puts "You have #{CodeChecker.correct_colors} of the correct elements with #{CodeChecker.result} in the correct positions
-         You've taken #{Mastermind.guess} guess"
-  end
-        
+  def keep_trying(colors, positions, guesses)
+   puts "You have #{colors} of the correct elements with #{positions} in the correct positions
+         You've taken #{guesses} guess"
+  end 
 
   def invalid_entry
     puts "Sorry invalid entry try again!"
   end
   
-  def player_wins
-    puts "Congratulations! You guessed #{} in #{} guesses over #{}"
+  def player_wins(code, guesses, minutes)
+    puts "Congratulations! You guessed #{code} in #{guesses} guesses over #{minutes}"
     puts "Do you want to (p)lay again or (q)uit?"
   end
   

@@ -1,16 +1,14 @@
-# require './lib/game_runner'
-require './lib/message.rb'
 require './lib/code_generator.rb'
 require './lib/code_checker.rb'
+require './lib/message.rb'
 require "pry"
 require "pry-state"
 
 class Mastermind 
-    attr_reader :secret_code, :player_guess, :guess
+  attr_reader :secret_code, :player_guess, :guess, :total_time, :end_time, :start_time
   include Message
 
   def initialize
-    @start_time = nil 
     @player_guess = []
     @guess = 0
   end
@@ -45,6 +43,7 @@ class Mastermind
   
   def play_game
     @player_guess = gets.chomp.downcase
+    @start_time = Time.new
     guess_counter
   end
   
@@ -54,17 +53,23 @@ class Mastermind
     end
     
     if @player_guess == @secret_code.join
-      player_wins
+      @end_time = Time.new
+      player_wins(secret_code, guess, total_time)
       options_loop
     elsif @player_guess == "c" || @player_guess == "cheat"
       display_secret(@secret_code)
+      begin_game
     else 
-      CodeChecker.new(player_guess, secret_code)
-      keep_trying
-      play_game
+      cc = CodeChecker.new(player_guess, secret_code)
+      keep_trying(cc.correct_colors, cc.result, guess)
+      begin_game
     end
   end
 
+  def total_time
+    @total_time = end_time - start_time
+  end
+    
   def guess_counter
     @guess += 1
     guess_checker(@player_guess)
@@ -80,9 +85,8 @@ class Mastermind
   end
 end
 
-
-  
-
+m = Mastermind.new
+m.greet_player
 
 
 

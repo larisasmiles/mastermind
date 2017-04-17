@@ -11,26 +11,26 @@ attr_reader :current_guess, :secret_code, :correct_colors, :result
     run
   end
 
-  def compare_codes(current_guess, secret_code)
+  def compare_codes
     @result = secret_code.select.with_index do |letter, i|
       letter == current_guess[i]
   end
     @result = @result.length
   end
 
-  def guessed_correct_colors(current_guess, secret_code)
+  def guessed_correct_colors
     @correct_colors = 0
-    @secret_code.each do |letter|
+    secret_code.each do |letter|
       if current_guess.include?(letter)
         @correct_colors += 1
       end
     end
-    @correct_colors
+    correct_colors
   end
   
   def run
-    compare_codes(current_guess, secret_code)
-    guessed_correct_colors(current_guess, secret_code)
+    compare_codes
+    guessed_correct_colors
   end
   
 end
